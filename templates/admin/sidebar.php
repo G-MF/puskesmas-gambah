@@ -13,7 +13,7 @@
                 <img src="<?= base_url('assets/img/admin-icon.png') ?>" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">ADMIN</a>
+                <a href="#" class="d-block"><?= $_SESSION['nama_user'] ?></a>
             </div>
         </div>
 
@@ -23,77 +23,110 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
+                <?php if ($_SESSION['id_role'] == 1) : ?>
+
+                    <li class="nav-item">
+                        <a href="<?= base_url('admin') ?>" class="nav-link <?= page_active('admin') ?>">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    </li>
+
+
+                    <?php
+                    $pagesekarang = $_SERVER['PHP_SELF'];
+                    $namaArray    = explode('/', $pagesekarang);
+                    $jumlah       = count($namaArray);
+                    $pagesekarang = $namaArray[$jumlah - 2];
+                    $link = [
+                        'user',
+                        'pegawai',
+                        'jenis-imunisasi',
+                        'jenis-vitamin',
+                        'anak',
+                        'ibu-hamil'
+                    ];
+                    ?>
+
+                    <li class="nav-item has-treeview <?= in_array($pagesekarang, $link) === true ? 'menu-open' : '' ?>">
+                        <a href="#" class="nav-link <?= in_array($pagesekarang, $link) === true ? 'active' : '' ?>">
+                            <i class="nav-icon fas fa-database"></i>
+                            <p>
+                                Data Master
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= base_url('admin/user') ?>" class="nav-link <?= page_active('user') ?>">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>User</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url('admin/pegawai') ?>" class="nav-link <?= page_active('pegawai') ?>">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Pegawai</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url('admin/jenis-imunisasi') ?>" class="nav-link <?= page_active('jenis-imunisasi') ?>">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Jenis Imunisasi</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url('admin/jenis-vitamin') ?>" class="nav-link <?= page_active('jenis-vitamin') ?>">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Jenis Vitamin</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url('admin/anak') ?>" class="nav-link <?= page_active('anak') ?>">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Anak</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url('admin/ibu-hamil') ?>" class="nav-link <?= page_active('ibu-hamil') ?>">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Ibu Hamil</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <div class="dropdown-divider"></div>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-list"></i>
+                            <p>
+                                Laporan
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Laporan 1</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                <?php endif; ?>
+
+                <div class="dropdown-divider"></div>
                 <li class="nav-item">
-                    <a href="<?= base_url('admin') ?>" class="nav-link <?= page_active('admin') ?>">
-                        <i class="nav-icon fas fa-home"></i>
+                    <a href="<?= base_url('logout') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
-                            Dashboard
+                            Logout
                         </p>
                     </a>
-                </li>
-
-
-                <?php
-                $pagesekarang = $_SERVER['PHP_SELF'];
-                $namaArray    = explode('/', $pagesekarang);
-                $jumlah       = count($namaArray);
-                $pagesekarang = $namaArray[$jumlah - 2];
-                $link = [
-                    'user',
-                    'pegawai',
-                    'jenis-imunisasi',
-                    'jenis-vitamin',
-                    'anak',
-                    'ibu-hamil'
-                ];
-                ?>
-
-                <li class="nav-item has-treeview <?= in_array($pagesekarang, $link) === true ? 'menu-open' : '' ?>">
-                    <a href="#" class="nav-link <?= in_array($pagesekarang, $link) === true ? 'active' : '' ?>">
-                        <i class="nav-icon fas fa-database"></i>
-                        <p>
-                            Data Master
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?= base_url('admin/user') ?>" class="nav-link <?= page_active('user') ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>User</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('admin/pegawai') ?>" class="nav-link <?= page_active('pegawai') ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Pegawai</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('admin/jenis-imunisasi') ?>" class="nav-link <?= page_active('jenis-imunisasi') ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Jenis Imunisasi</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('admin/jenis-vitamin') ?>" class="nav-link <?= page_active('jenis-vitamin') ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Jenis Vitamin</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('admin/anak') ?>" class="nav-link <?= page_active('anak') ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Anak</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('admin/ibu-hamil') ?>" class="nav-link <?= page_active('ibu-hamil') ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Ibu Hamil</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
 
             </ul>

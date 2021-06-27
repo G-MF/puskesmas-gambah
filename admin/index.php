@@ -1,4 +1,14 @@
-<?php include_once '../config/config.php' ?>
+<?php
+include_once '../config/config.php';
+include_once '../config/auth-cek.php';
+
+$count_user            = $koneksi->query("SELECT COUNT(*) as jml FROM user")->fetch_array();
+$count_pegawai         = $koneksi->query("SELECT COUNT(*) as jml FROM pegawai")->fetch_array();
+$count_anak            = $koneksi->query("SELECT COUNT(*) as jml FROM anak")->fetch_array();
+$count_jenis_imunisasi = $koneksi->query("SELECT COUNT(*) as jml FROM jenis_imunisasi")->fetch_array();
+$count_jenis_vitamin   = $koneksi->query("SELECT COUNT(*) as jml FROM jenis_vitamin")->fetch_array();
+$count_ibu_hamil       = $koneksi->query("SELECT COUNT(*) as jml FROM ibu_hamil")->fetch_array();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,6 +49,10 @@
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
+          <div class="callout callout-success">
+            <h5>Selamat Datang Admin</h5>
+            <p><?= $_SESSION['nama_user'] ?></p>
+          </div>
           <!-- Info boxes -->
           <div class="row">
 
@@ -47,7 +61,7 @@
                 <span class="info-box-icon bg-info elevation-1"><i class="fas fa-portrait"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Data User</span>
-                  <span class="info-box-number">1</span>
+                  <span class="info-box-number"><?= $count_user['jml'] ?></span>
                 </div>
               </div>
             </div>
@@ -57,7 +71,7 @@
                 <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-portrait"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Data Pegawai</span>
-                  <span class="info-box-number">1</span>
+                  <span class="info-box-number"><?= $count_pegawai['jml'] ?></span>
                 </div>
               </div>
             </div>
@@ -67,17 +81,7 @@
                 <span class="info-box-icon bg-success elevation-1"><i class="fas fa-portrait"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Data Anak</span>
-                  <span class="info-box-number">1</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md">
-              <div class="info-box mb-3">
-                <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-portrait"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Data Ibu Hamil</span>
-                  <span class="info-box-number">1</span>
+                  <span class="info-box-number"><?= $count_anak['jml'] ?></span>
                 </div>
               </div>
             </div>
@@ -88,30 +92,10 @@
 
             <div class="col-md">
               <div class="info-box mb-3">
-                <span class="info-box-icon bg-purple elevation-1"><i class="fas fa-portrait"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Data Ibu Hamil</span>
-                  <span class="info-box-number">1</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md">
-              <div class="info-box mb-3">
-                <span class="info-box-icon bg-olive elevation-1"><i class="fas fa-portrait"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Data Ibu Melahirkan</span>
-                  <span class="info-box-number">1</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md">
-              <div class="info-box mb-3">
                 <span class="info-box-icon bg-fuchsia elevation-1"><i class="fas fa-syringe"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Data Jenis Imunisasi</span>
-                  <span class="info-box-number">1</span>
+                  <span class="info-box-number"><?= $count_jenis_imunisasi['jml'] ?></span>
                 </div>
               </div>
             </div>
@@ -121,7 +105,17 @@
                 <span class="info-box-icon bg-navy elevation-1"><i class="fas fa-pills"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Data Jenis Vitamin</span>
-                  <span class="info-box-number">1</span>
+                  <span class="info-box-number"><?= $count_jenis_vitamin['jml'] ?></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md">
+              <div class="info-box mb-3">
+                <span class="info-box-icon bg-purple elevation-1"><i class="fas fa-portrait"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Data Ibu Hamil</span>
+                  <span class="info-box-number"><?= $count_ibu_hamil['jml'] ?></span>
                 </div>
               </div>
             </div>
