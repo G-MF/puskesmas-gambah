@@ -24,13 +24,12 @@
 
 <body class="hold-transition login-page" style="background-color: whitesmoke;">
     <div class="error-page">
-        <h2 class="headline text-warning"> 404</h2>
+        <h2 class="headline text-danger"> 500</h2>
 
         <div class="error-content">
             <br>
-            <h3><i class="fas fa-exclamation-triangle text-warning"></i> Halaman tidak ditemukan.</h3>
+            <h3><i class="fas fa-exclamation-triangle text-warning"></i> Internal Server Error.</h3>
             <p>
-                Halaman yang Anda cari tidak ditemukan.
                 Silahkan kembali ke <a href="<?= base_url() ?>">Menu Login</a>.
             </p>
         </div>
