@@ -137,12 +137,13 @@
                     $pagesekarang = $namaArray[$jumlah - 2];
                     $link = [
                         'kehadiran-anak',
+                        'pemberian-imunisasi'
                     ];
                     ?>
 
                     <li class="nav-item has-treeview <?= in_array($pagesekarang, $link) === true ? 'menu-open' : '' ?>">
                         <a href="#" class="nav-link <?= in_array($pagesekarang, $link) === true ? 'active' : '' ?>">
-                            <i class="nav-icon fas fa-database"></i>
+                            <i class="nav-icon fas fa-users"></i>
                             <p>
                                 Menu Anak
                                 <i class="right fas fa-angle-left"></i>
@@ -153,6 +154,13 @@
                                 <a href="<?= base_url('pegawai/kehadiran-anak') ?>" class="nav-link <?= page_active('kehadiran-anak') ?>">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Kehadiran Anak</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="<?= base_url('pegawai/pemberian-imunisasi') ?>" class="nav-link <?= page_active('pemberian-imunisasi') ?>">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Pemberian Imunisasi</p>
                                 </a>
                             </li>
                         </ul>
