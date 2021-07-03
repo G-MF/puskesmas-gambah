@@ -1,4 +1,10 @@
-<?php include_once "config/config.php"; ?>
+<?php
+include_once "config/config.php";
+
+if (isset($_SESSION['id_user']) || isset($_SESSION['id_role'])) {
+  header("location:javascript://history.go(-1)");
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -126,6 +132,15 @@ if (isset($_POST['login'])) {
                 })
                 </script>";
         echo '<meta http-equiv="refresh" content="2; url=admin">';
+      } elseif ($data['id_role'] == 2) {
+        echo "
+        <script type='text/javascript'>
+        Toast.fire({
+            type: 'success',
+            title: 'Anda Login Sebagai Pegawai'
+        })
+        </script>";
+        echo '<meta http-equiv="refresh" content="2; url=pegawai">';
       }
     } else {
       echo "

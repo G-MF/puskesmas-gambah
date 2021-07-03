@@ -31,7 +31,7 @@
             <h3><i class="fas fa-exclamation-triangle text-warning"></i> Halaman tidak ditemukan.</h3>
             <p>
                 Halaman yang Anda cari tidak ditemukan.
-                Silahkan kembali ke <a href="<?= base_url() ?>">Menu Login</a>.
+                Silahkan kembali ke <a href="javascript:history.go(-1);">Halaman sebelumnya</a>.
             </p>
         </div>
         <!-- /.error-content -->

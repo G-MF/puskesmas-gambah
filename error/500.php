@@ -30,7 +30,7 @@
             <br>
             <h3><i class="fas fa-exclamation-triangle text-warning"></i> Internal Server Error.</h3>
             <p>
-                Silahkan kembali ke <a href="<?= base_url() ?>">Menu Login</a>.
+                Silahkan kembali ke <a href="javascript:history.go(-1);">Halaman sebelumnya</a>.
             </p>
         </div>
         <!-- /.error-content -->

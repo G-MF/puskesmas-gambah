@@ -117,6 +117,48 @@
                         </ul>
                     </li>
 
+
+                <?php elseif ($_SESSION['id_role'] == 2) : ?>
+
+                    <li class="nav-item">
+                        <a href="<?= base_url('pegawai') ?>" class="nav-link <?= page_active('pegawai') ?>">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    </li>
+
+
+                    <?php
+                    $pagesekarang = $_SERVER['PHP_SELF'];
+                    $namaArray    = explode('/', $pagesekarang);
+                    $jumlah       = count($namaArray);
+                    $pagesekarang = $namaArray[$jumlah - 2];
+                    $link = [
+                        'kehadiran-anak',
+                    ];
+                    ?>
+
+                    <li class="nav-item has-treeview <?= in_array($pagesekarang, $link) === true ? 'menu-open' : '' ?>">
+                        <a href="#" class="nav-link <?= in_array($pagesekarang, $link) === true ? 'active' : '' ?>">
+                            <i class="nav-icon fas fa-database"></i>
+                            <p>
+                                Menu Anak
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= base_url('pegawai/kehadiran-anak') ?>" class="nav-link <?= page_active('kehadiran-anak') ?>">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Kehadiran Anak</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
                 <?php endif; ?>
 
                 <div class="dropdown-divider"></div>
