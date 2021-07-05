@@ -138,7 +138,8 @@
                     $link = [
                         'kehadiran-anak',
                         'pemberian-imunisasi',
-                        'pemberian-vitamin'
+                        'pemberian-vitamin',
+                        'perkembangan-gizi-bb'
                     ];
                     ?>
 
@@ -169,6 +170,13 @@
                                 <a href="<?= base_url('pegawai/pemberian-vitamin') ?>" class="nav-link <?= page_active('pemberian-vitamin') ?>">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Pemberian Vitamin</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="<?= base_url('pegawai/perkembangan-gizi-bb') ?>" class="nav-link <?= page_active('perkembangan-gizi-bb') ?>">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Perkembangan Gizi BB</p>
                                 </a>
                             </li>
                         </ul>
