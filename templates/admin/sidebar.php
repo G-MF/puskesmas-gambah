@@ -139,7 +139,8 @@
                         'kehadiran-anak',
                         'pemberian-imunisasi',
                         'pemberian-vitamin',
-                        'perkembangan-gizi-bb'
+                        'perkembangan-gizi-bb',
+                        'perkembangan-gizi-tb'
                     ];
                     ?>
 
@@ -177,6 +178,13 @@
                                 <a href="<?= base_url('pegawai/perkembangan-gizi-bb') ?>" class="nav-link <?= page_active('perkembangan-gizi-bb') ?>">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Perkembangan Gizi BB</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="<?= base_url('pegawai/perkembangan-gizi-tb') ?>" class="nav-link <?= page_active('perkembangan-gizi-tb') ?>">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Perkembangan Gizi TB</p>
                                 </a>
                             </li>
                         </ul>
