@@ -145,6 +145,7 @@
                     ];
                     $link_ibu = [
                         'kehadiran-ibu-hamil',
+                        'ibu-melahirkan',
                         'kematian-ibu-hamil'
                     ];
                     ?>
@@ -216,6 +217,13 @@
                                 <a href="<?= base_url('pegawai/kehadiran-ibu-hamil') ?>" class="nav-link <?= page_active('kehadiran-ibu-hamil') ?>">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Kehadiran Ibu Hamil</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="<?= base_url('pegawai/ibu-melahirkan') ?>" class="nav-link <?= page_active('ibu-melahirkan') ?>">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Ibu Melahirkan</p>
                                 </a>
                             </li>
 
