@@ -143,6 +143,10 @@
                         'perkembangan-gizi-tb',
                         'kematian-anak'
                     ];
+                    $link_ibu = [
+                        'kehadiran-ibu-hamil',
+                        'kematian-ibu-hamil'
+                    ];
                     ?>
 
                     <li class="nav-item has-treeview <?= in_array($pagesekarang, $link) === true ? 'menu-open' : '' ?>">
@@ -193,6 +197,32 @@
                                 <a href="<?= base_url('pegawai/kematian-anak') ?>" class="nav-link <?= page_active('kematian-anak') ?>">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Kematian Anak</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-item has-treeview <?= in_array($pagesekarang, $link_ibu) === true ? 'menu-open' : '' ?>">
+                        <a href="#" class="nav-link <?= in_array($pagesekarang, $link_ibu) === true ? 'active' : '' ?>">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                Menu Ibu Hamil
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= base_url('pegawai/kehadiran-ibu-hamil') ?>" class="nav-link <?= page_active('kehadiran-ibu-hamil') ?>">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Kehadiran Ibu Hamil</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="<?= base_url('pegawai/kematian-ibu-hamil') ?>" class="nav-link <?= page_active('kematian-ibu-hamil') ?>">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Kematian Ibu Hamil</p>
                                 </a>
                             </li>
                         </ul>
