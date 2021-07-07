@@ -1,4 +1,7 @@
-<?php include_once '../../config/config.php' ?>
+<?php
+include_once '../../config/config.php';
+include_once '../../config/auth-cek.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
