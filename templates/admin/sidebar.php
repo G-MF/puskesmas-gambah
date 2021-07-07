@@ -98,25 +98,6 @@
                         </ul>
                     </li>
 
-                    <div class="dropdown-divider"></div>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-list"></i>
-                            <p>
-                                Laporan
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Laporan 1</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
 
                 <?php elseif ($_SESSION['id_role'] == 2) : ?>
 
@@ -238,6 +219,96 @@
 
 
                 <?php endif; ?>
+
+                <div class="dropdown-divider"></div>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Laporan
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>
+                                    Data Anak
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" data-toggle="modal" data-target="#lap-kehadiran-anak" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Kehadiran Anak</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" data-toggle="modal" data-target="#lap-pemberian-imunisasi" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Pemberian Imunisasi</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" data-toggle="modal" data-target="#lap-pemberian-vitamin" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Pemberian Vitamin</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" data-toggle="modal" data-target="#lap-perkembangan-gizi-bb" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Perkembangan Gizi BB</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" data-toggle="modal" data-target="#lap-perkembangan-gizi-tb" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Perkembangan Gizi TB</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" data-toggle="modal" data-target="#lap-kematian-anak" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Kematian Anak</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>
+                                    Data Ibu Hamil
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" data-toggle="modal" data-target="#lap-kehadiran-ibu" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Kehadiran Ibu Hamil</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" data-toggle="modal" data-target="#lap-ibu-melahirkan" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Ibu Hamil Melahirkan</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" data-toggle="modal" data-target="#lap-kematian-ibu" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Kematian Ibu</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
 
                 <div class="dropdown-divider"></div>
                 <li class="nav-item">

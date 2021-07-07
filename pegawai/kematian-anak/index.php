@@ -67,7 +67,7 @@ include_once '../../config/auth-cek-pegawai.php';
                                         <thead class="bg-success">
                                             <tr>
                                                 <th style="text-align: center; vertical-align: middle; width: 5%;">No</th>
-                                                <th style="text-align: center; vertical-align: middle;">Tanggal Hadir</th>
+                                                <th style="text-align: center; vertical-align: middle;">Tanggal</th>
                                                 <th style="text-align: center; vertical-align: middle;">Nama Anak</th>
                                                 <th style="text-align: center; vertical-align: middle;">Jenis Kelamin</th>
                                                 <th style="text-align: center; vertical-align: middle;">Nama Orang Tua</th>
