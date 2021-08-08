@@ -119,6 +119,7 @@ if (isset($_POST['cetak'])) {
         <thead>
             <tr>
                 <th style="text-align: center; vertical-align: middle; width: 5%;">No</th>
+                <th style="text-align: center; vertical-align: middle;">No. Rekam Medis</th>
                 <th style="text-align: center; vertical-align: middle;">Tanggal</th>
                 <th style="text-align: center; vertical-align: middle;">BB (Kg)</th>
                 <th style="text-align: center; vertical-align: middle;">TB (Cm)</th>
@@ -130,6 +131,7 @@ if (isset($_POST['cetak'])) {
             <?php foreach ($data as $item) : ?>
                 <tr align="center">
                     <td><?= $no++; ?></td>
+                    <td><?= $item['no_rekam_medis'] ?></td>
                     <td><?= tgl_indo($item['tgl_kehadiran']) ?></td>
                     <td><?= $item['bb_anak'] ?></td>
                     <td><?= $item['tb_anak'] ?></td>
