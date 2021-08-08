@@ -15,7 +15,7 @@ if (isset($_POST['cetak'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laporan Kehadiran Anak</title>
+    <title>Laporan Kehadiran Posyandu Anak</title>
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets/img/logo.png') ?>">
 
     <style>
@@ -69,7 +69,7 @@ if (isset($_POST['cetak'])) {
     </div>
 
     <h3 align="center">
-        LAPORAN DATA KEHADIRAN ANAK <br>
+        LAPORAN DATA KEHADIRAN POSYANDU ANAK <br>
         <small> Tanggal <?= tgl_indo($tgl1) ?> s/d <?= tgl_indo($tgl2) ?> </small>
     </h3>
 
@@ -83,6 +83,7 @@ if (isset($_POST['cetak'])) {
                 <th style="text-align: center; vertical-align: middle;">BB (Kg)</th>
                 <th style="text-align: center; vertical-align: middle;">TB (Cm)</th>
                 <th style="text-align: center; vertical-align: middle;">Lingkar Kepala (Cm)</th>
+                <th style="text-align: center; vertical-align: middle;">Pegawai</th>
             </tr>
         </thead>
         <tbody>
@@ -98,6 +99,12 @@ if (isset($_POST['cetak'])) {
                     <td><?= $item['bb_anak'] ?></td>
                     <td><?= $item['tb_anak'] ?></td>
                     <td><?= $item['lingkar_kepala'] ?></td>
+                    <td>
+                        <?php
+                            $pegawai = $koneksi->query("SELECT nama_pegawai FROM pegawai WHERE id_user = '$item[id_pegawai]'")->fetch_array();
+                            echo $pegawai['nama_pegawai'];
+                        ?>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

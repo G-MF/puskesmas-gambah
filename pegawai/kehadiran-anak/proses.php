@@ -24,8 +24,17 @@ if (isset($_POST['simpan'])) {
         header("location: tambah", true, 301);
     } else {
 
+        $query1 = mysqli_query($koneksi, "SELECT max(no_rekam_medis) AS no FROM kehadiran_anak");
+        $data   = mysqli_fetch_array($query1);
+        $no     = $data['no'];
+
+        $nourut = (int) substr($no, 4, 5);
+        $nourut++;
+
+        $no_rekam_medis = "RKM.".sprintf('%05s', $nourut);
+
         $submit = $koneksi->query("INSERT INTO kehadiran_anak VALUES
-            (NULL, '$tgl_kehadiran', '$id_anak', '$bb_anak', '$tb_anak', '$lingkar_kepala', '$id_pegawai')
+            (NULL, '$tgl_kehadiran', '$id_anak', '$bb_anak', '$tb_anak', '$lingkar_kepala', '$id_pegawai', '$no_rekam_medis')
         ");
 
         if ($submit) {

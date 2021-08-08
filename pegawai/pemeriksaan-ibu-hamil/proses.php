@@ -10,6 +10,9 @@ if (isset($_POST['simpan'])) {
     $berat_badan    = strip_tags($_POST['berat_badan']);
     $tinggi_badan   = strip_tags($_POST['tinggi_badan']);
     $tensi          = strip_tags($_POST['tensi']);
+    $tinggi_fundus  = strip_tags($_POST['tinggi_fundus']);
+    $letak_janin    = strip_tags($_POST['letak_janin']);
+    $denyut_jantung = strip_tags($_POST['denyut_jantung']);
     $keluhan        = strip_tags($_POST['keluhan']);
     $saran          = strip_tags($_POST['saran']);
     $id_pegawai     = $_SESSION['id_user'];
@@ -26,6 +29,9 @@ if (isset($_POST['simpan'])) {
             'berat_badan'    => $berat_badan,
             'tinggi_badan'   => $tinggi_badan,
             'tensi'          => $tensi,
+            'tinggi_fundus'  => $tinggi_fundus,
+            'letak_janin'    => $letak_janin,
+            'denyut_jantung' => $denyut_jantung,
             'keluhan'        => $keluhan,
             'saran'          => $saran
         ];
@@ -33,13 +39,13 @@ if (isset($_POST['simpan'])) {
     } else {
 
         $submit = $koneksi->query("INSERT INTO kehadiran_ibu_hamil VALUES
-            (NULL, '$tgl_kehadiran', '$id_ibu_hamil', '$hpl', '$usia_kehamilan', '$berat_badan', '$tinggi_badan', '$tensi', '$keluhan', '$saran', '$id_pegawai')
+            (NULL, '$tgl_kehadiran', '$id_ibu_hamil', '$hpl', '$usia_kehamilan', '$berat_badan', '$tinggi_badan', '$tensi', '$tinggi_fundus', '$letak_janin', '$denyut_jantung', '$keluhan', '$saran', '$id_pegawai')
         ");
 
         if ($submit) {
-            $_SESSION['alert'] = "Data Kehadiran Ibu Hamil Ditambahkan";
+            $_SESSION['alert'] = "Data Pemeriksaan Ibu Hamil Ditambahkan";
             unset($_SESSION['valid']);
-            header("location: ../kehadiran-ibu-hamil", true, 301);
+            header("location: ../pemeriksaan-ibu-hamil", true, 301);
         } else {
             $_SESSION['alert'] = 'Data Gagal Disimpan';
             header("location: tambah", true, 301);
@@ -56,6 +62,9 @@ if (isset($_POST['simpan'])) {
         $berat_badan       = strip_tags($_POST['berat_badan']);
         $tinggi_badan      = strip_tags($_POST['tinggi_badan']);
         $tensi             = strip_tags($_POST['tensi']);
+        $tinggi_fundus     = strip_tags($_POST['tinggi_fundus']);
+        $letak_janin       = strip_tags($_POST['letak_janin']);
+        $denyut_jantung    = strip_tags($_POST['denyut_jantung']);
         $keluhan           = strip_tags($_POST['keluhan']);
         $saran             = strip_tags($_POST['saran']);
         $id_pegawai        = $_SESSION['id_user'];
@@ -67,6 +76,9 @@ if (isset($_POST['simpan'])) {
             berat_badan    = '$berat_badan',
             tinggi_badan   = '$tinggi_badan',
             tensi          = '$tensi',
+            tinggi_fundus  = '$tinggi_fundus',
+            letak_janin    = '$letak_janin',
+            denyut_jantung = '$denyut_jantung',
             keluhan        = '$keluhan',
             saran          = '$saran',
             id_pegawai     = '$id_pegawai'
@@ -74,8 +86,8 @@ if (isset($_POST['simpan'])) {
         ");
 
         if ($submit) {
-            $_SESSION['alert'] = "Data Kehadiran Ibu Hamil Diubah";
-            header("location: ../kehadiran-ibu-hamil", true, 301);
+            $_SESSION['alert'] = "Data Pemeriksaan Ibu Hamil Diubah";
+            header("location: ../pemeriksaan-ibu-hamil", true, 301);
         } else {
             $_SESSION['alert'] = 'Data Gagal Diubah';
             header("location: edit?id=$id_kehadiran_ibu", true, 301);
@@ -87,7 +99,7 @@ if (isset($_POST['simpan'])) {
             $hapus = $koneksi->query("DELETE FROM kehadiran_ibu_hamil WHERE id_kehadiran_ibu = '$_GET[id]'");
 
             if ($hapus) {
-                $_SESSION['alert'] = "Data Kehadiran Ibu Hamil Dihapus";
-                header("location: ../kehadiran-ibu-hamil", true, 301);
+                $_SESSION['alert'] = "Data Pemeriksaan Ibu Hamil Dihapus";
+                header("location: ../pemeriksaan-ibu-hamil", true, 301);
             }
         }

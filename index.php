@@ -132,6 +132,7 @@ if (isset($_POST['login'])) {
                 })
                 </script>";
         echo '<meta http-equiv="refresh" content="2; url=admin">';
+
       } elseif ($data['id_role'] == 2) {
         echo "
         <script type='text/javascript'>
@@ -141,6 +142,16 @@ if (isset($_POST['login'])) {
         })
         </script>";
         echo '<meta http-equiv="refresh" content="2; url=pegawai">';
+
+      } elseif ($data['id_role'] == 3) {
+        echo "
+        <script type='text/javascript'>
+        Toast.fire({
+            type: 'success',
+            title: 'Anda Login Sebagai Kepala Puskesmas'
+        })
+        </script>";
+        echo '<meta http-equiv="refresh" content="2; url=kepala-puskesmas">';
       }
     } else {
       echo "

@@ -84,7 +84,7 @@ include_once '../../config/auth-cek-pegawai.php';
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Berat Badan (Kg)</label>
                                             <div class="col-sm-10 form-valid">
-                                                <input type="text" class="form-control" name="bb_anak" autocomplete="off" required onkeypress="return Angkasaja(event)" placeholder="Masukkan angka saja" value="<?= isset($_SESSION['valid']) ? $_SESSION['valid']['bb_anak'] : '' ?>">
+                                                <input type="number" class="form-control" name="bb_anak" autocomplete="off" required step="0.1" placeholder="Masukkan angka saja" value="<?= isset($_SESSION['valid']) ? $_SESSION['valid']['bb_anak'] : '' ?>">
                                             </div>
                                         </div>
 

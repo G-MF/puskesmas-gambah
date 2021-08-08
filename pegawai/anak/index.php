@@ -27,12 +27,12 @@ include_once '../../config/auth-cek-pegawai.php';
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Data Kehadiran Posyandu Anak</h1>
+                            <h1 class="m-0 text-dark">Data Anak</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item">Dashboard</li>
-                                <li class="breadcrumb-item active">Kehadiran Posyandu Anak</li>
+                                <li class="breadcrumb-item active">Anak</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -58,7 +58,7 @@ include_once '../../config/auth-cek-pegawai.php';
                             <div class="card card-outline card-success">
                                 <div class="card-header">
                                     <div class="card-tools">
-                                        <a href="tambah" class="btn bg-gradient-success" onclick="<?php unset($_SESSION['valid']) ?>"><i class="fas fa-plus"> Tambah Data</i></a>
+                                        <a href="tambah" class="btn bg-gradient-success"><i class="fas fa-plus"> Tambah Data</i></a>
                                     </div>
                                 </div>
 
@@ -67,36 +67,35 @@ include_once '../../config/auth-cek-pegawai.php';
                                         <thead class="bg-success">
                                             <tr>
                                                 <th style="text-align: center; vertical-align: middle; width: 5%;">No</th>
-                                                <th style="text-align: center; vertical-align: middle;">Tanggal Hadir</th>
                                                 <th style="text-align: center; vertical-align: middle;">Nama Anak</th>
-                                                <th style="text-align: center; vertical-align: middle;">Nama Orang Tua</th>
-                                                <th style="text-align: center; vertical-align: middle;">BB (Kg)</th>
-                                                <th style="text-align: center; vertical-align: middle;">TB (Cm)</th>
-                                                <th style="text-align: center; vertical-align: middle;">Lingkar Kepala (Cm)</th>
-                                                <th style="text-align: center; vertical-align: middle;">Pegawai</th>
+                                                <th style="text-align: center; vertical-align: middle;">Jenis Kelamin</th>
+                                                <th style="text-align: center; vertical-align: middle;">TTL</th>
+                                                <th style="text-align: center; vertical-align: middle;">Berat Badan</th>
+                                                <th style="text-align: center; vertical-align: middle;">Tinggi Badan</th>
+                                                <th style="text-align: center; vertical-align: middle;">Nama Ayah</th>
+                                                <th style="text-align: center; vertical-align: middle;">Nama Ibu</th>
+                                                <th style="text-align: center; vertical-align: middle;">Alamat</th>
                                                 <th style="text-align: center; vertical-align: middle;">Opsi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $data = $koneksi->query('SELECT * FROM kehadiran_anak k LEFT JOIN anak a ON k.id_anak = a.id_anak ORDER BY id_kehadiran_anak DESC');
+                                            $data = $koneksi->query('SELECT * FROM anak ORDER BY id_anak DESC');
                                             foreach ($data as $item) :
                                             ?>
                                                 <tr align="center">
                                                     <td><?= $no++; ?></td>
-                                                    <td><?= tgl_indo($item['tgl_kehadiran']) ?></td>
                                                     <td align="left"><?= $item['nama_anak'] ?></td>
-                                                    <td align="left">
-                                                        Nama Ayah : <?= $item['nama_ayah'] ?> <br>
-                                                        Nama Ibu : <?= $item['nama_ibu'] ?>
-                                                    </td>
-                                                    <td><?= $item['bb_anak'] ?></td>
-                                                    <td><?= $item['tb_anak'] ?></td>
-                                                    <td><?= $item['lingkar_kepala'] ?></td>
-                                                    <td><?= $_SESSION['nama_user'] ?></td>
+                                                    <td><?= $item['jk'] ?></td>
+                                                    <td align="left"><?= $item['tempat_lahir'] . ', ' . tgl_indo($item['tgl_lahir']) ?></td>
+                                                    <td><?= $item['berat_badan'] ?> Kg</td>
+                                                    <td><?= $item['tinggi_badan'] ?> Cm</td>
+                                                    <td align="left"><?= $item['nama_ayah'] ?></td>
+                                                    <td align="left"><?= $item['nama_ibu'] ?></td>
+                                                    <td align="left"><?= $item['alamat'] ?></td>
                                                     <td>
-                                                        <a href="edit?id=<?= $item['id_kehadiran_anak'] ?>" class="btn bg-gradient-info btn-sm"><i class="fa fa-edit"> Edit</i></a>
-                                                        <button type="button" class="btn bg-gradient-danger btn-sm delete" data-link="proses?id=<?= $item['id_kehadiran_anak'] ?>" data-name="<?= $item['nama_anak'] ?>">
+                                                        <a href="edit?id=<?= $item['id_anak'] ?>" class="btn bg-gradient-info btn-sm"><i class="fa fa-edit"> Edit</i></a>
+                                                        <button type="button" class="btn bg-gradient-danger btn-sm delete" data-link="proses?id=<?= $item['id_anak'] ?>" data-name="<?= $item['nama_anak'] ?>">
                                                             <i class="fa fa-trash"> Hapus</i>
                                                         </button>
                                                     </td>

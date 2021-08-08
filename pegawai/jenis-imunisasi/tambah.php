@@ -3,11 +3,6 @@ include_once '../../config/config.php';
 include_once '../../config/auth-cek-pegawai.php';
 ?>
 
-<?php
-$id   = $_GET['id'];
-$data = $koneksi->query("SELECT * FROM perkembangan_gizi_berat_badan p LEFT JOIN anak a ON p.id_anak = a.id_anak WHERE id_gizi_bb = '$id'")->fetch_array();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,13 +26,13 @@ $data = $koneksi->query("SELECT * FROM perkembangan_gizi_berat_badan p LEFT JOIN
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Edit Data Perkembangan Gizi Berat Badan</h1>
+                            <h1 class="m-0 text-dark">Tambah Data Imunisasi</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item">Dashboard</li>
-                                <li class="breadcrumb-item">Perkembangan Gizi Berat Badan</li>
-                                <li class="breadcrumb-item active">Edit</li>
+                                <li class="breadcrumb-item">Imunisasi</li>
+                                <li class="breadcrumb-item active">Tambah</li>
                             </ol>
                         </div>
                     </div>
@@ -62,42 +57,31 @@ $data = $koneksi->query("SELECT * FROM perkembangan_gizi_berat_badan p LEFT JOIN
                                 <form class="form-horizontal" action="proses" method="POST" id="form-input">
                                     <div class="card-body">
 
-                                        <input type="hidden" name="id_gizi_bb" readonly value="<?= $id ?>">
-
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Tanggal Pengecekan</label>
+                                            <label class="col-sm-2 col-form-label">Kode Imunisaai</label>
                                             <div class="col-sm-10 form-valid">
-                                                <input type="date" class="form-control" name="tgl_cek" autocomplete="off" required value="<?= $data['tgl_cek'] ?>">
+                                                <input type="text" class="form-control" name="kode_imunisasi" autocomplete="off" autofocus required>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Nama Anak</label>
+                                            <label class="col-sm-2 col-form-label">Jenis Imunisaai</label>
                                             <div class="col-sm-10 form-valid">
-                                                <select name="id_anak" class="form-control select2" data-placeholder="Pilih" style="width: 100%;">
-                                                    <option value="<?= $data['id_anak'] ?>"><?= $data['nama_anak'] ?></option>
-                                                </select>
+                                                <input type="text" class="form-control" name="jenis_imunisasi" autocomplete="off" required>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Berat Badan (Kg)</label>
+                                            <label class="col-sm-2 col-form-label">Usia Wajib</label>
                                             <div class="col-sm-10 form-valid">
-                                                <input type="number" class="form-control" name="bb_anak" autocomplete="off" required step="0.1"placeholder="Masukkan angka saja" value="<?= $data['bb_anak'] ?>">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Kategori Gizi</label>
-                                            <div class="col-sm-10 form-valid">
-                                                <input type="text" class="form-control" name="kategori_gizi" autocomplete="off" required value="<?= $data['kategori_gizi'] ?>">
+                                                <input type="text" class="form-control" name="usia_wajib" autocomplete="off" required>
                                             </div>
                                         </div>
 
                                     </div>
                                     <div class="card-footer text-center">
-                                        <button type="submit" name="edit" class="btn bg-gradient-success"><i class="fa fa-save"> Simpan</i></button>
-                                        <a href="../perkembangan-gizi-bb/" class="btn bg-gradient-dark"><i class="fa fa-arrow-alt-circle-left"> Batal</i></a>
+                                        <button type="submit" name="simpan" class="btn bg-gradient-success"><i class="fa fa-save"> Simpan</i></button>
+                                        <a href="../jenis-imunisasi/" class="btn bg-gradient-dark"><i class="fa fa-arrow-alt-circle-left"> Batal</i></a>
                                     </div>
                                 </form>
                             </div>
@@ -136,31 +120,31 @@ $data = $koneksi->query("SELECT * FROM perkembangan_gizi_berat_badan p LEFT JOIN
             // VALIDASI
             $('#form-input').validate({
                 rules: {
-                    tgl_cek: {
-                        required: true
+                    kode_imunisasi: {
+                        required: true,
+                        maxlength: 30
                     },
-                    id_anak: {
-                        required: true
+                    jenis_imunisasi: {
+                        required: true,
+                        maxlength: 30
                     },
-                    bb_anak: {
-                        required: true
-                    },
-                    kategori_gizi: {
-                        required: true
+                    usia_wajib: {
+                        required: true,
+                        maxlength: 30
                     },
                 },
                 messages: {
-                    tgl_cek: {
-                        required: "Tanggal Pengecekan tidak boleh kosong!"
+                    kode_imunisasi: {
+                        required: "Kode Imunisasi tidak boleh kosong!",
+                        maxlength: "Kode Imunisasi maksimal 30 karakter"
                     },
-                    id_anak: {
-                        required: "Nama Anak tidak boleh kosong!"
+                    jenis_imunisasi: {
+                        required: "Jenis Imunisasi tidak boleh kosong!",
+                        maxlength: "Jenis Imunisasi maksimal 30 karakter"
                     },
-                    bb_anak: {
-                        required: "Berat Badan tidak boleh kosong!"
-                    },
-                    kategori_gizi: {
-                        required: "Kategori Gizi tidak boleh kosong!"
+                    usia_wajib: {
+                        required: "Usia Wajib tidak boleh kosong!",
+                        maxlength: "Usia Wajib maksimal 30 karakter"
                     },
                 },
                 errorElement: 'span',

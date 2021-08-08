@@ -26,12 +26,12 @@ include_once '../../config/auth-cek-pegawai.php';
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Tambah Data Kehadiran Ibu Hamil</h1>
+                            <h1 class="m-0 text-dark">Tambah Data Anak</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item">Dashboard</li>
-                                <li class="breadcrumb-item">Kehadiran Ibu Hamil</li>
+                                <li class="breadcrumb-item">Anak</li>
                                 <li class="breadcrumb-item active">Tambah</li>
                             </ol>
                         </div>
@@ -58,80 +58,77 @@ include_once '../../config/auth-cek-pegawai.php';
                                     <div class="card-body">
 
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Tanggal Kehadiran</label>
+                                            <label class="col-sm-2 col-form-label">Nama Anak</label>
                                             <div class="col-sm-10 form-valid">
-                                                <input type="date" class="form-control" name="tgl_kehadiran" autocomplete="off" required value="<?= isset($_SESSION['valid']) ? $_SESSION['valid']['tgl_kehadiran'] : date('Y-m-d') ?>">
+                                                <input type="text" class="form-control" name="nama_anak" autofocus autocomplete="off" required>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Nama Ibu Hamil</label>
+                                            <label class="col-sm-2 col-form-label">Jenis Kelamin</label>
                                             <div class="col-sm-10 form-valid">
-                                                <select name="id_ibu_hamil" class="form-control select2" data-placeholder="Pilih" style="width: 100%;" autofocus>
-                                                    <option value=""></option>
-                                                    <?php
-                                                    $data_ibu = $koneksi->query("SELECT * FROM ibu_hamil ORDER BY nama_ibu_hamil ASC");
-                                                    foreach ($data_ibu as $ibu) :
-                                                    ?>
-                                                        <option value="<?= $ibu['id_ibu_hamil'] ?>" <?= isset($_SESSION['valid']['id_ibu_hamil']) == $ibu['id_ibu_hamil'] ? 'selected' : '' ?>><?= $ibu['nama_ibu_hamil'] ?></option>
-                                                    <?php endforeach; ?>
+                                                <select name="jk" class="form-control" required>
+                                                    <option value="Laki-laki">Laki-laki</option>
+                                                    <option value="Perempuan">Perempuan</option>
                                                 </select>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">HPL</label>
+                                            <label class="col-sm-2 col-form-label">Tempat Lahir</label>
                                             <div class="col-sm-10 form-valid">
-                                                <input type="date" class="form-control" name="hpl" autocomplete="off" required value="<?= isset($_SESSION['valid']) ? $_SESSION['valid']['hpl'] : date('Y-m-d') ?>">
+                                                <input type="text" class="form-control" name="tempat_lahir" autocomplete="off" required>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Usia Kehamilan</label>
+                                            <label class="col-sm-2 col-form-label">Tanggal Lahir</label>
                                             <div class="col-sm-10 form-valid">
-                                                <input type="text" class="form-control" name="usia_kehamilan" autocomplete="off" required value="<?= isset($_SESSION['valid']) ? $_SESSION['valid']['usia_kehamilan'] : '' ?>">
+                                                <input type="date" class="form-control" name="tgl_lahir" autocomplete="off" required>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Berat Badan (Kg)</label>
+                                            <label class="col-sm-2 col-form-label">Berat Badan</label>
+                                            <div class="col-sm-1 form-valid">
+                                                <input type="text" class="form-control" name="berat_badan" onkeypress="return Angkasaja(event)" autocomplete="off" required>
+                                            </div>
+                                            <span>Kg</span>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Tinggi Badan</label>
+                                            <div class="col-sm-1 form-valid">
+                                                <input type="text" class="form-control" name="tinggi_badan" onkeypress="return Angkasaja(event)" autocomplete="off" required>
+                                            </div>
+                                            <span>Cm</span>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Nama Ayah</label>
                                             <div class="col-sm-10 form-valid">
-                                                <input type="text" class="form-control" name="berat_badan" autocomplete="off" required onkeypress="return Angkasaja(event)" placeholder="Masukkan angka saja" value="<?= isset($_SESSION['valid']) ? $_SESSION['valid']['berat_badan'] : '' ?>">
+                                                <input type="text" class="form-control" name="nama_ayah" autocomplete="off" required>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Tinggi Badan (Cm)</label>
+                                            <label class="col-sm-2 col-form-label">Nama Ibu</label>
                                             <div class="col-sm-10 form-valid">
-                                                <input type="text" class="form-control" name="tinggi_badan" autocomplete="off" required onkeypress="return Angkasaja(event)" placeholder="Masukkan angka saja" value="<?= isset($_SESSION['valid']) ? $_SESSION['valid']['tinggi_badan'] : '' ?>">
+                                                <input type="text" class="form-control" name="nama_ibu" autocomplete="off" required>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Tensi</label>
+                                            <label class="col-sm-2 col-form-label">Alamat</label>
                                             <div class="col-sm-10 form-valid">
-                                                <input type="text" class="form-control" name="tensi" autocomplete="off" required value="<?= isset($_SESSION['valid']) ? $_SESSION['valid']['tensi'] : '' ?>">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Keluhan Sekarang</label>
-                                            <div class="col-sm-10 form-valid">
-                                                <input type="text" class="form-control" name="keluhan" autocomplete="off" required value="<?= isset($_SESSION['valid']) ? $_SESSION['valid']['keluhan'] : '' ?>">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Saran</label>
-                                            <div class="col-sm-10 form-valid">
-                                                <input type="text" class="form-control" name="saran" autocomplete="off" required value="<?= isset($_SESSION['valid']) ? $_SESSION['valid']['saran'] : '' ?>">
+                                                <textarea class="form-control" name="alamat" rows="3" required></textarea>
                                             </div>
                                         </div>
 
                                     </div>
                                     <div class="card-footer text-center">
                                         <button type="submit" name="simpan" class="btn bg-gradient-success"><i class="fa fa-save"> Simpan</i></button>
-                                        <a href="../kehadiran-ibu-hamil/" class="btn bg-gradient-dark" onclick="<?php unset($_SESSION['valid']) ?>"><i class="fa fa-arrow-alt-circle-left"> Batal</i></a>
+                                        <a href="../anak/" class="btn bg-gradient-dark"><i class="fa fa-arrow-alt-circle-left"> Batal</i></a>
                                     </div>
                                 </form>
                             </div>
@@ -170,19 +167,19 @@ include_once '../../config/auth-cek-pegawai.php';
             // VALIDASI
             $('#form-input').validate({
                 rules: {
-                    tgl_kehadiran: {
+                    nama_anak: {
                         required: true,
+                        maxlength: 100
                     },
-                    id_ibu_hamil: {
-                        required: true,
+                    jk: {
+                        required: true
                     },
-                    hpl: {
+                    tempat_lahir: {
                         required: true,
-                        maxlength: 10
+                        maxlength: 100
                     },
-                    usia_kehamilan: {
+                    tgl_lahir: {
                         required: true,
-                        maxlength: 10
                     },
                     berat_badan: {
                         required: true,
@@ -192,32 +189,33 @@ include_once '../../config/auth-cek-pegawai.php';
                         required: true,
                         maxlength: 10
                     },
-                    tensi: {
+                    nama_ayah: {
                         required: true,
-                        maxlength: 30
+                        maxlength: 100
                     },
-                    keluhan: {
+                    nama_ibu: {
                         required: true,
-                        maxlength: 500
+                        maxlength: 100
                     },
-                    saran: {
+                    alamat: {
                         required: true,
                         maxlength: 500
                     },
                 },
                 messages: {
-                    tgl_kehadiran: {
-                        required: "Tanggal Kehadiran tidak boleh kosong!"
+                    nama_anak: {
+                        required: "Nama Anak tidak boleh kosong!",
+                        maxlength: "Nama Anak maksimal 100 karakter"
                     },
-                    id_ibu_hamil: {
-                        required: "Nama Ibu Hamil tidak boleh kosong!"
+                    jk: {
+                        required: "Jenis Kelamin tidak boleh kosong!",
                     },
-                    hpl: {
-                        required: "HPL tidak boleh kosong!",
+                    tempat_lahir: {
+                        required: "Tempat Lahir tidak boleh kosong!",
+                        maxlength: "Tempat Lahir maksimal 100 karakter"
                     },
-                    usia_kehamilan: {
-                        required: "Usia Kehamilan tidak boleh kosong!",
-                        maxlength: "Usia Kehamilan maksimal 30 karakter"
+                    tgl_lahir: {
+                        required: "Tanggal Lahir tidak boleh kosong!",
                     },
                     berat_badan: {
                         required: "Berat Badan tidak boleh kosong!",
@@ -227,17 +225,17 @@ include_once '../../config/auth-cek-pegawai.php';
                         required: "Tinggi Badan tidak boleh kosong!",
                         maxlength: "Tinggi Badan maksimal 10 karakter"
                     },
-                    tensi: {
-                        required: "Tensi tidak boleh kosong!",
-                        maxlength: "Tensi maksimal 30 karakter"
+                    nama_ayah: {
+                        required: "Nama Ayah tidak boleh kosong!",
+                        maxlength: "Nama Ayah maksimal 10 karakter"
                     },
-                    keluhan: {
-                        required: "Keluhan tidak boleh kosong!",
-                        maxlength: "Keluhan maksimal 500 karakter"
+                    nama_ibu: {
+                        required: "Nama Ibu tidak boleh kosong!",
+                        maxlength: "Nama Ibu maksimal 10 karakter"
                     },
-                    saran: {
-                        required: "Saran tidak boleh kosong!",
-                        maxlength: "Saran maksimal 500 karakter"
+                    alamat: {
+                        required: "Alamat tidak boleh kosong!",
+                        maxlength: "Alamat maksimal 500 karakter"
                     },
                 },
                 errorElement: 'span',
@@ -253,6 +251,14 @@ include_once '../../config/auth-cek-pegawai.php';
                 }
             });
         });
+
+        // FORMAT ANGKA SAJA
+        function Angkasaja(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
     </script>
 
 </body>

@@ -4,7 +4,7 @@ require_once '../config/config.php';
 if (isset($_POST['cetak'])) {
     $tgl1 = $_POST['tgl1'];
     $tgl2 = $_POST['tgl2'];
-    $data = $koneksi->query("SELECT * FROM perkembangan_gizi_berat_badan p LEFT JOIN anak a ON p.id_anak = a.id_anak WHERE tgl_cek BETWEEN '$tgl1' AND '$tgl2'");
+    $data = $koneksi->query("SELECT * FROM kehadiran_ibu_hamil k LEFT JOIN ibu_hamil i ON k.id_ibu_hamil = i.id_ibu_hamil WHERE tgl_kehadiran BETWEEN '$tgl1' AND '$tgl2'");
 }
 ?>
 
@@ -15,7 +15,7 @@ if (isset($_POST['cetak'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laporan Perkembangan Gizi Berat Badan</title>
+    <title>Laporan Pemeriksaan Ibu Hamil</title>
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets/img/logo.png') ?>">
 
     <style>
@@ -69,20 +69,26 @@ if (isset($_POST['cetak'])) {
     </div>
 
     <h3 align="center">
-        LAPORAN DATA PERKEMBANGAN GIZI BERAT BADAN <br>
+        LAPORAN DATA PEMERIKSAAN IBU HAMIL <br>
         <small> Tanggal <?= tgl_indo($tgl1) ?> s/d <?= tgl_indo($tgl2) ?> </small>
     </h3>
 
     <table border="1" width="100%">
         <thead>
             <tr>
-                <th style="text-align: center; vertical-align: middle; width: 5%;">No</th>
+                <th style="text-align: center; vertical-align: middle; width: 2%;">No</th>
                 <th style="text-align: center; vertical-align: middle;">Tanggal</th>
-                <th style="text-align: center; vertical-align: middle;">Nama Anak</th>
-                <th style="text-align: center; vertical-align: middle;">Jenis Kelamin</th>
+                <th style="text-align: center; vertical-align: middle;">Nama Ibu Hamil</th>
+                <th style="text-align: center; vertical-align: middle;">HPL</th>
+                <th style="text-align: center; vertical-align: middle;">Usia Kehamilan</th>
                 <th style="text-align: center; vertical-align: middle;">Berat Badan (Kg)</th>
-                <th style="text-align: center; vertical-align: middle;">Usia</th>
-                <th style="text-align: center; vertical-align: middle;">Kategori Gizi</th>
+                <th style="text-align: center; vertical-align: middle;">Tinggi Badan (Cm)</th>
+                <th style="text-align: center; vertical-align: middle;">Tensi</th>
+                <th style="text-align: center; vertical-align: middle;">Tinggi Fundus (Cm)</th>
+                <th style="text-align: center; vertical-align: middle;">Letak Janin</th>
+                <th style="text-align: center; vertical-align: middle;">Denyut Jantung (Bpm)</th>
+                <th style="text-align: center; vertical-align: middle;">Keluhan</th>
+                <th style="text-align: center; vertical-align: middle;">Saran</th>
                 <th style="text-align: center; vertical-align: middle;">Pegawai</th>
             </tr>
         </thead>
@@ -90,12 +96,18 @@ if (isset($_POST['cetak'])) {
             <?php foreach ($data as $item) : ?>
                 <tr align="center">
                     <td><?= $no++; ?></td>
-                    <td><?= tgl_indo($item['tgl_cek']) ?></td>
-                    <td align="left"><?= $item['nama_anak'] ?></td>
-                    <td><?= $item['jk'] ?></td>
-                    <td><?= $item['bb_anak'] ?></td>
-                    <td><?= $item['usia_anak'] ?></td>
-                    <td><?= $item['kategori_gizi'] ?></td>
+                    <td><?= tgl_indo($item['tgl_kehadiran']) ?></td>
+                    <td align="left"><?= $item['nama_ibu_hamil'] ?></td>
+                    <td><?= tgl_indo($item['hpl']) ?></td>
+                    <td><?= $item['usia_kehamilan'] ?></td>
+                    <td><?= $item['berat_badan'] ?></td>
+                    <td><?= $item['tinggi_badan'] ?></td>
+                    <td><?= $item['tensi'] ?></td>
+                    <td><?= $item['tinggi_fundus'] ?></td>
+                    <td><?= $item['letak_janin'] ?></td>
+                    <td><?= $item['denyut_jantung'] ?></td>
+                    <td align="left"><?= $item['keluhan'] ?></td>
+                    <td align="left"><?= $item['saran'] ?></td>
                     <td>
                         <?php
                             $pegawai = $koneksi->query("SELECT nama_pegawai FROM pegawai WHERE id_user = '$item[id_pegawai]'")->fetch_array();

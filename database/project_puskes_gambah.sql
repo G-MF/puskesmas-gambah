@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 07/07/2021 14:31:30
+ Date: 07/07/2021 15:59:55
 */
 
 SET NAMES utf8mb4;
@@ -206,15 +206,12 @@ CREATE TABLE `pegawai`  (
   `no_hp` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `email` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `id_user` int(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id_pegawai`) USING BTREE,
-  INDEX `id_user_foreign`(`id_user`) USING BTREE,
-  CONSTRAINT `id_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`id_pegawai`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pegawai
 -- ----------------------------
-INSERT INTO `pegawai` VALUES (4, '123', 'Noormilasari', 'Laki-laki', 'dfasf', '54235', 'ed@gag.bvbv', 2);
 
 -- ----------------------------
 -- Table structure for pemberian_imunisasi
@@ -323,6 +320,5 @@ CREATE TABLE `user`  (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES (1, 'Gusti MF', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1);
-INSERT INTO `user` VALUES (2, 'Noormilasari', 'mila', '827ccb0eea8a706c4c34a16891f84e7b', 2);
 
 SET FOREIGN_KEY_CHECKS = 1;

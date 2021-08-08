@@ -82,6 +82,7 @@ if (isset($_POST['cetak'])) {
                 <th style="text-align: center; vertical-align: middle;">Usia Anak</th>
                 <th style="text-align: center; vertical-align: middle;">Jenis Vitamin</th>
                 <th style="text-align: center; vertical-align: middle;">Usia Wajib</th>
+                <th style="text-align: center; vertical-align: middle;">Pegawai</th>
             </tr>
         </thead>
         <tbody>
@@ -93,6 +94,12 @@ if (isset($_POST['cetak'])) {
                     <td align="left"><?= $item['usia_anak'] ?></td>
                     <td><?= $item['jenis_vitamin'] ?></td>
                     <td><?= $item['usia_wajib'] ?></td>
+                    <td>
+                        <?php
+                            $pegawai = $koneksi->query("SELECT nama_pegawai FROM pegawai WHERE id_user = '$item[id_pegawai]'")->fetch_array();
+                            echo $pegawai['nama_pegawai'];
+                        ?>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

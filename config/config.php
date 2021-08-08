@@ -2,6 +2,7 @@
 function base_url($url = null)
 {
     $base_url = "http://puskesmas-gambah.test";
+    // $base_url = "http://localhost/puskesmas-gambah";
     if ($url != null) {
         return $base_url . "/" . $url;
     } else {

@@ -26,12 +26,12 @@ include_once '../../config/auth-cek-pegawai.php';
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Tambah Data Kehadiran Anak</h1>
+                            <h1 class="m-0 text-dark">Tambah Data Kehadiran Posyandu Anak</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item">Dashboard</li>
-                                <li class="breadcrumb-item">Kehadiran Anak</li>
+                                <li class="breadcrumb-item">Kehadiran Posyandu Anak</li>
                                 <li class="breadcrumb-item active">Tambah</li>
                             </ol>
                         </div>
@@ -82,7 +82,7 @@ include_once '../../config/auth-cek-pegawai.php';
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Berat Badan (Kg)</label>
                                             <div class="col-sm-10 form-valid">
-                                                <input type="text" class="form-control" name="bb_anak" autocomplete="off" required onkeypress="return Angkasaja(event)" placeholder="Masukkan angka saja" value="<?= isset($_SESSION['valid']) ? $_SESSION['valid']['bb_anak'] : '' ?>">
+                                                <input type="number" class="form-control" name="bb_anak" autocomplete="off" required step="0.1" placeholder="Masukkan angka saja" value="<?= isset($_SESSION['valid']) ? $_SESSION['valid']['bb_anak'] : '' ?>">
                                             </div>
                                         </div>
 
