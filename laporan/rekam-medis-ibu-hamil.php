@@ -16,13 +16,23 @@ $nama_bulan = [
     '12' =>'Desember'
 ];
 
-if (isset($_POST['cetak'])) {
+if (isset($_POST['cetak_filter'])) {
     $id_ibu_hamil = $_POST['id_ibu_hamil'];
     $bulan   = $_POST['bulan'];
     $tahun   = $_POST['tahun'];
     $data = $koneksi->query("SELECT * FROM kehadiran_ibu_hamil k LEFT JOIN ibu_hamil i ON k.id_ibu_hamil = i.id_ibu_hamil WHERE i.id_ibu_hamil = '$id_ibu_hamil' AND MONTH(tgl_kehadiran) = '$bulan' AND YEAR(tgl_kehadiran) = '$tahun'");
     
     $ibu_hamil = $koneksi->query("SELECT * FROM ibu_hamil WHERE id_ibu_hamil = '$id_ibu_hamil'")->fetch_array();
+
+    $ket       = "Bulan ". $nama_bulan[$bulan]. " Tahun " .$tahun;
+}else
+if (isset($_POST['cetak_semua'])) {
+    $id_ibu_hamil = $_POST['id_ibu_hamil'];
+    
+    $data      = $koneksi->query("SELECT * FROM kehadiran_ibu_hamil k LEFT JOIN ibu_hamil i ON k.id_ibu_hamil = i.id_ibu_hamil WHERE i.id_ibu_hamil = '$id_ibu_hamil'");
+    
+    $ibu_hamil = $koneksi->query("SELECT * FROM ibu_hamil WHERE id_ibu_hamil = '$id_ibu_hamil'")->fetch_array();
+    $ket       = "Semua Data";
 }
 ?>
 
@@ -87,25 +97,30 @@ if (isset($_POST['cetak'])) {
     </div>
 
     <h3 align="center">
-        LAPORAN REKAM MEDIS IBU HAMIL
+        LAPORAN REKAM MEDIS IBU HAMIL <br>
+        <small><?= $ket; ?></small>
     </h3>
 
-    <table width="50%">
+    <table width="60%">
         <tr>
             <th align="left" width="25%">Nama Ibu Hamil</th>
             <td width="2%" align="center">:</td>
             <td><?= $ibu_hamil['nama_ibu_hamil'] ?></td>
         </tr>
-        <tr>
-            <th align="left" width="12%">Bulan</th>
-            <td width="2%" align="center">:</td>
-            <td><?= $nama_bulan[$bulan] ?></td>
-        </tr>
-        <tr>
-            <th align="left" width="12%">Tahun</th>
-            <td width="2%" align="center">:</td>
-            <td><?= $tahun ?></td>
-        </tr>
+
+        <?php if (isset($_POST['cetak_filter'])) { ?>
+            <tr>
+                <th align="left" width="12%">Bulan</th>
+                <td width="2%" align="center">:</td>
+                <td><?= $nama_bulan[$bulan] ?></td>
+            </tr>
+            <tr>
+                <th align="left" width="12%">Tahun</th>
+                <td width="2%" align="center">:</td>
+                <td><?= $tahun ?></td>
+            </tr>
+        <?php } ?>
+
     </table>
 
     <br>

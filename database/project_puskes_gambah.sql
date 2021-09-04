@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 07/07/2021 15:59:55
+ Date: 08/08/2021 21:59:37
 */
 
 SET NAMES utf8mb4;
@@ -125,6 +125,7 @@ CREATE TABLE `kehadiran_anak`  (
   `tb_anak` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `lingkar_kepala` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `id_pegawai` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `no_rekam_medis` varchar(11) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id_kehadiran_anak`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
@@ -145,9 +146,13 @@ CREATE TABLE `kehadiran_ibu_hamil`  (
   `berat_badan` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `tinggi_badan` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `tensi` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `tinggi_fundus` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `letak_janin` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `denyut_jantung` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `keluhan` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   `saran` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   `id_pegawai` int(11) NULL DEFAULT NULL,
+  `no_rekam_medis` varchar(11) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id_kehadiran_ibu`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
@@ -207,11 +212,13 @@ CREATE TABLE `pegawai`  (
   `email` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `id_user` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id_pegawai`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pegawai
 -- ----------------------------
+INSERT INTO `pegawai` VALUES (1, NULL, 'Kepala Puskesmas Gambah', NULL, NULL, NULL, NULL, 2);
+INSERT INTO `pegawai` VALUES (2, NULL, 'Noormilasari', NULL, NULL, NULL, NULL, 3);
 
 -- ----------------------------
 -- Table structure for pemberian_imunisasi
@@ -295,13 +302,14 @@ CREATE TABLE `role`  (
   `id_role` int(11) NOT NULL AUTO_INCREMENT,
   `role` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id_role`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role
 -- ----------------------------
 INSERT INTO `role` VALUES (1, 'admin');
 INSERT INTO `role` VALUES (2, 'pegawai');
+INSERT INTO `role` VALUES (3, 'kepala puskesmas');
 
 -- ----------------------------
 -- Table structure for user
@@ -314,11 +322,13 @@ CREATE TABLE `user`  (
   `password` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `id_role` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id_user`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES (1, 'Gusti MF', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1);
+INSERT INTO `user` VALUES (2, 'Kepala Puskesmas Gambah', 'kepalapuskes', '2ca2a20d1491602adb7fc717c9889b8c', 3);
+INSERT INTO `user` VALUES (3, 'Noormilasari', 'mila', '0d5c82813c52b2d5ba31175a17303b82', 2);
 
 SET FOREIGN_KEY_CHECKS = 1;

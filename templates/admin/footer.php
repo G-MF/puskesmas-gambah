@@ -451,61 +451,111 @@
                 </button>
             </div>
 
-            <form action="<?= base_url('laporan/rekam-medis-anak.php') ?>" target="_blank" method="POST">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label>Nama Anak</label>
-                                <select name="id_anak" class="form-control" required>
-                                    <option value="" selected disabled>Pilih</option>
-                                    <?php 
-                                        $anak = $koneksi->query("SELECT * FROM anak ORDER BY nama_anak ASC");
-                                        foreach($anak as $ank) :
-                                    ?>
-                                        <option value="<?= $ank['id_anak'] ?>"><?= $ank['nama_anak'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+            <div class="modal-body">
+
+                <div class="card card-primary card-tabs">
+                    <div class="card-header p-0 pt-1">
+                        <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#filter" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Cetak Perbulan/Pertahun</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Cetak Semua Data</a>
+                        </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content" id="custom-tabs-one-tabContent">
+                            <div class="tab-pane fade show active" id="filter" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+
+                                <form action="<?= base_url('laporan/rekam-medis-anak.php') ?>" target="_blank" method="POST">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Nama Anak</label>
+                                                <select name="id_anak" class="form-control" required>
+                                                    <option value="" selected disabled>Pilih</option>
+                                                    <?php 
+                                                        $anak = $koneksi->query("SELECT * FROM anak ORDER BY nama_anak ASC");
+                                                        foreach($anak as $ank) :
+                                                    ?>
+                                                        <option value="<?= $ank['id_anak'] ?>"><?= $ank['nama_anak'] ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Bulan</label>
+                                                <select name="bulan" class="form-control" required>
+                                                    <option value="01">Januari</option>
+                                                    <option value="02">Februari</option>
+                                                    <option value="03">Maret</option>
+                                                    <option value="04">April</option>
+                                                    <option value="05">Mei</option>
+                                                    <option value="06">Juni</option>
+                                                    <option value="07">Juli</option>
+                                                    <option value="08">Agustus</option>
+                                                    <option value="09">September</option>
+                                                    <option value="10">Oktober</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">Desember</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Tahun</label>
+                                                <select name="tahun" class="form-control" required>
+                                                <?php 
+                                                    for ($i = date('Y'); $i > 2020; $i--) :
+                                                ?>
+                                                    <option value="<?= $i ?>"><?= $i ?></option>
+                                                <?php endfor;  ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-sm-12 justify-content-center text-center">
+                                            <button type="submit" name="cetak_filter" class="btn bg-gradient-primary"><i class="fa fa-eye"> Preview</i></button>
+                                            <button type="button" class="btn bg-gradient-secondary" data-dismiss="modal"><i class="fa fa-times"> Batal</i></button>
+                                        </div>
+                                    </div>
+                                </form>
+
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Bulan</label>
-                                <select name="bulan" class="form-control" required>
-                                    <option value="01">Januari</option>
-                                    <option value="02">Februari</option>
-                                    <option value="03">Maret</option>
-                                    <option value="04">April</option>
-                                    <option value="05">Mei</option>
-                                    <option value="06">Juni</option>
-                                    <option value="07">Juli</option>
-                                    <option value="08">Agustus</option>
-                                    <option value="09">September</option>
-                                    <option value="10">Oktober</option>
-                                    <option value="11">November</option>
-                                    <option value="12">Desember</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Tahun</label>
-                                <select name="tahun" class="form-control" required>
-                                <?php 
-                                    for ($i = date('Y'); $i > 2020; $i--) :
-                                ?>
-                                    <option value="<?= $i ?>"><?= $i ?></option>
-                                <?php endfor;  ?>
-                                </select>
+                            <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+                            
+                                <form action="<?= base_url('laporan/rekam-medis-anak.php') ?>" target="_blank" method="POST">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Nama Anak</label>
+                                                <select name="id_anak" class="form-control" required>
+                                                    <option value="" selected disabled>Pilih</option>
+                                                    <?php 
+                                                        $anak = $koneksi->query("SELECT * FROM anak ORDER BY nama_anak ASC");
+                                                        foreach($anak as $ank) :
+                                                    ?>
+                                                        <option value="<?= $ank['id_anak'] ?>"><?= $ank['nama_anak'] ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 justify-content-center text-center">
+                                            <button type="submit" name="cetak_semua" class="btn bg-gradient-primary"><i class="fa fa-eye"> Preview</i></button>
+                                            <button type="button" class="btn bg-gradient-secondary" data-dismiss="modal"><i class="fa fa-times"> Batal</i></button>
+                                        </div>
+                                    </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer justify-content-center text-center">
-                    <button type="submit" name="cetak" class="btn bg-gradient-primary"><i class="fa fa-eye"> Preview</i></button>
-                    <button type="button" class="btn bg-gradient-secondary" data-dismiss="modal"><i class="fa fa-times"> Batal</i></button>
-                </div>
-            </form>
+
+
+            </div>
 
         </div>
     </div>
@@ -523,9 +573,111 @@
                 </button>
             </div>
 
-            <form action="<?= base_url('laporan/rekam-medis-ibu-hamil.php') ?>" target="_blank" method="POST">
-                <div class="modal-body">
-                    <div class="row">
+            <div class="modal-body">
+
+                <div class="card card-primary card-tabs">
+                    <div class="card-header p-0 pt-1">
+                        <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#filter1" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Cetak Perbulan/Pertahun</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#semua" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Cetak Semua Data</a>
+                        </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-body">
+
+                        <div class="tab-content" id="custom-tabs-one-tabContent">
+                            <div class="tab-pane fade show active" id="filter1" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+
+                                <form action="<?= base_url('laporan/rekam-medis-ibu-hamil.php') ?>" target="_blank" method="POST">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Nama Ibu Hamil</label>
+                                                <select name="id_ibu_hamil" class="form-control" required>
+                                                    <option value="" selected disabled>Pilih</option>
+                                                    <?php 
+                                                        $anak = $koneksi->query("SELECT * FROM ibu_hamil ORDER BY nama_ibu_hamil ASC");
+                                                        foreach($anak as $ank) :
+                                                    ?>
+                                                        <option value="<?= $ank['id_ibu_hamil'] ?>"><?= $ank['nama_ibu_hamil'] ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Bulan</label>
+                                                <select name="bulan" class="form-control" required>
+                                                    <option value="01">Januari</option>
+                                                    <option value="02">Februari</option>
+                                                    <option value="03">Maret</option>
+                                                    <option value="04">April</option>
+                                                    <option value="05">Mei</option>
+                                                    <option value="06">Juni</option>
+                                                    <option value="07">Juli</option>
+                                                    <option value="08">Agustus</option>
+                                                    <option value="09">September</option>
+                                                    <option value="10">Oktober</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">Desember</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Tahun</label>
+                                                <select name="tahun" class="form-control" required>
+                                                <?php 
+                                                    for ($i = date('Y'); $i > 2020; $i--) :
+                                                ?>
+                                                    <option value="<?= $i ?>"><?= $i ?></option>
+                                                <?php endfor;  ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-sm-12 justify-content-center text-center">
+                                            <button type="submit" name="cetak_filter" class="btn bg-gradient-primary"><i class="fa fa-eye"> Preview</i></button>
+                                            <button type="button" class="btn bg-gradient-secondary" data-dismiss="modal"><i class="fa fa-times"> Batal</i></button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                            <div class="tab-pane fade" id="semua" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+                            
+                                <form action="<?= base_url('laporan/rekam-medis-ibu-hamil.php') ?>" target="_blank" method="POST">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Nama Ibu Hamil</label>
+                                                <select name="id_ibu_hamil" class="form-control" required>
+                                                    <option value="" selected disabled>Pilih</option>
+                                                    <?php 
+                                                        $anak = $koneksi->query("SELECT * FROM ibu_hamil ORDER BY nama_ibu_hamil ASC");
+                                                        foreach($anak as $ank) :
+                                                    ?>
+                                                        <option value="<?= $ank['id_ibu_hamil'] ?>"><?= $ank['nama_ibu_hamil'] ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 justify-content-center text-center">
+                                            <button type="submit" name="cetak_semua" class="btn bg-gradient-primary"><i class="fa fa-eye"> Preview</i></button>
+                                            <button type="button" class="btn bg-gradient-secondary" data-dismiss="modal"><i class="fa fa-times"> Batal</i></button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <label>Nama Ibu Hamil</label>
@@ -571,13 +723,10 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
-                <div class="modal-footer justify-content-center text-center">
-                    <button type="submit" name="cetak" class="btn bg-gradient-primary"><i class="fa fa-eye"> Preview</i></button>
-                    <button type="button" class="btn bg-gradient-secondary" data-dismiss="modal"><i class="fa fa-times"> Batal</i></button>
-                </div>
-            </form>
+
+            </div>
 
         </div>
     </div>
