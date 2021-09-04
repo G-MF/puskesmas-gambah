@@ -145,13 +145,13 @@ if (isset($_POST['cetak_semua'])) {
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($data as $item) : ?>
+            <?php while ($item = $data->fetch_array()) : ?>
                 <tr align="center">
                     <td><?= $no++; ?></td>
                     <td><?= $item['no_rekam_medis'] ?></td>
                     <td><?= tgl_indo($item['tgl_kehadiran']) ?></td>
                     <td><?= tgl_indo($item['hpl']) ?></td>
-                    <td><?= $item['usia_kehamilan'] ?></td>
+                    <td><?= $item[4] ?></td>
                     <td><?= $item['berat_badan'] ?></td>
                     <td><?= $item['tinggi_badan'] ?></td>
                     <td><?= $item['tensi'] ?></td>
@@ -167,7 +167,7 @@ if (isset($_POST['cetak_semua'])) {
                         ?>
                     </td>
                 </tr>
-            <?php endforeach; ?>
+            <?php endwhile; ?>
         </tbody>
     </table>
 
